@@ -654,7 +654,7 @@ em { font-family: var(--font-display); font-style: italic; }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
 }
 
@@ -1200,4 +1200,62 @@ em { font-family: var(--font-display); font-style: italic; }
 }
 .stat-num.counting {
   color: var(--teal);
+}
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-side {
+    margin-top: 40px;
+  }
+
+  .hobbies-grid,
+  .projects-grid,
+  .skills-categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* PHONE */
+@media (max-width: 768px) {
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  .hero-side {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-name {
+    font-size: 2.2rem;
+    line-height: 1.1;
+  }
+
+  .section-heading {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .hobbies-grid,
+  .projects-grid,
+  .skills-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .hobby-card,
+  .project-card {
+    width: 100%;
+  }
 }
