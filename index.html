@@ -402,7 +402,7 @@
           </div>
           <div class="hobby-content">
             <h3>Gaming</h3>
-            <p>In my free time, I like playing games to relax and clear my mind after a busy day. It’s a simple way for me to unwind while also staying engaged and entertained.</p>
+            <p>In my free time, I enjoy playing games as a way to reset my mind after a busy day. It keeps me engaged and helps me stay focused while still having fun.</p>
           </div>
         </div>
 
@@ -412,7 +412,7 @@
           </div>
           <div class="hobby-content">
             <h3>Cooking</h3>
-            <p>I enjoy cooking meals at home, experimenting with ingredients, and trying out new recipes when I have the time. It’s something I find relaxing and rewarding, especially when I get to share the food I make.</p>
+            <p>I enjoy cooking at home, trying out different ingredients and recipes whenever I get the chance. It’s something I find satisfying, especially when I end up creating something I genuinely like eating.</p>
           </div>
         </div>
 
@@ -422,7 +422,7 @@
           </div>
           <div class="hobby-content">
             <h3>Films</h3>
-            <p>I watch films and series to relax and explore different genres and storytelling styles.</p>
+            <p>I watch films and series to explore different stories, characters, and genres. It’s a way for me to step into different perspectives and experiences.</p>
           </div>
         </div>
 
@@ -432,7 +432,7 @@
           </div>
           <div class="hobby-content">
             <h3>Music</h3>
-            <p>Music is something I naturally turn to as it helps me process my thoughts, relax during stressful moments, and sometimes even boosts my energy and focus when I need motivation.</p>
+            <p>Music is something I naturally turn to when I need to shift my mood or refocus. Depending on what I’m listening to, it can either calm my thoughts or give me energy to keep going.</p>
           </div>
         </div>
 
@@ -442,7 +442,7 @@
           </div>
           <div class="hobby-content">
             <h3>Design Inspiration Hunting</h3>
-            <p>I often browse Pinterest for design inspiration, collecting UI ideas, color palettes, and layouts that I find interesting or useful for future projects.</p>
+            <p>I often browse Pinterest for design ideas, saving layouts, UI patterns, and color combinations that stand out to me. I treat it as a personal collection of visual references I can go back to when working on projects.</p>
           </div>
         </div>
 
@@ -492,48 +492,7 @@
     </div>
   </footer>
 
-  <script>
-    // Intersection Observer for scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.project-card, .hobby-card, .skill-category, .bar-row, .about-card').forEach(el => {
-      el.classList.add('animate-on-scroll');
-      observer.observe(el);
-    });
-
-    // Smooth nav highlight
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (window.scrollY >= sectionTop) current = section.getAttribute('id');
-      });
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
-      });
-    });
-
-    // Bar animation on scroll
-    const barObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.bar-fill').forEach(bar => {
-            bar.style.width = bar.style.getPropertyValue('--w') || bar.getAttribute('data-w');
-          });
-        }
-      });
-    }, { threshold: 0.3 });
-    document.querySelectorAll('.proficiency-bars').forEach(el => barObserver.observe(el));
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
