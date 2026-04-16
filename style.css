@@ -1007,3 +1007,197 @@ em { font-family: var(--font-display); font-style: italic; }
   .proficiency-bars { padding: 28px 24px; }
   .bar-row { grid-template-columns: 100px 1fr 36px; gap: 12px; }
 }
+
+/* ══════════════════════════════════════
+   SCROLL PROGRESS BAR
+══════════════════════════════════════ */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--teal), var(--purple), var(--pink));
+  z-index: 9999;
+  transition: width 0.08s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+
+/* ══════════════════════════════════════
+   CUSTOM CURSOR
+══════════════════════════════════════ */
+@media (hover: hover) {
+  body { cursor: none; }
+  a, button, .btn, .hobby-card, .project-card,
+  .skill-tag, .about-card, .contact-link,
+  .nav-cta { cursor: none; }
+}
+
+#cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 6px; height: 6px;
+  background: var(--purple);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-3px, -3px);
+  transition: opacity 0.2s, background 0.2s, transform 0.05s;
+  will-change: transform;
+}
+
+#cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 32px; height: 32px;
+  border: 1.5px solid var(--purple);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-16px, -16px);
+  transition: opacity 0.2s, width 0.25s cubic-bezier(0.16,1,0.3,1),
+              height 0.25s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.25s, background 0.25s;
+  will-change: transform;
+  opacity: 0.6;
+}
+
+#cursor-ring.cursor-hover {
+  width: 52px; height: 52px;
+  transform: translate(-26px, -26px);
+  border-color: var(--teal);
+  background: rgba(15, 145, 114, 0.06);
+  opacity: 1;
+}
+#cursor-dot.cursor-hover {
+  background: var(--teal);
+  transform: translate(-3px, -3px) scale(1.5);
+}
+
+#cursor-ring.cursor-click {
+  width: 24px; height: 24px;
+  transform: translate(-12px, -12px);
+  background: rgba(0, 88, 62, 0.1);
+  border-color: var(--purple);
+}
+#cursor-dot.cursor-click {
+  transform: translate(-3px, -3px) scale(0.7);
+}
+
+
+/* ══════════════════════════════════════
+   TYPING CURSOR
+══════════════════════════════════════ */
+.typed-cursor {
+  display: inline-block;
+  color: var(--purple);
+  animation: blink 1s step-end infinite;
+  margin-left: 1px;
+  font-weight: 300;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+
+/* ══════════════════════════════════════
+   HOBBY FLIP CARDS
+══════════════════════════════════════ */
+.hobby-flip-card {
+  perspective: 1000px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.hobby-flip-inner {
+  position: relative;
+  width: 100%; height: 100%;
+  min-height: 200px;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: var(--radius-md);
+}
+
+.hobby-flip-card:hover .hobby-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.hobby-flip-front,
+.hobby-flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-md);
+  padding: 32px;
+}
+
+.hobby-flip-front {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.hobby-flip-back {
+  background: linear-gradient(135deg, var(--purple), #1a7a5a);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+}
+
+.hobby-flip-emoji {
+  font-size: 32px;
+  filter: grayscale(0.1);
+}
+
+.hobby-flip-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* hobby-big needs full height */
+.hobby-big .hobby-flip-inner { min-height: 320px; }
+
+
+/* ══════════════════════════════════════
+   SKILL TAG RIPPLE
+══════════════════════════════════════ */
+.skill-tag {
+  position: relative;
+  overflow: hidden;
+}
+.skill-ripple {
+  position: absolute;
+  width: 6px; height: 6px;
+  background: currentColor;
+  opacity: 0.4;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple-out 0.5s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes ripple-out {
+  to { transform: translate(-50%, -50%) scale(20); opacity: 0; }
+}
+
+
+/* ══════════════════════════════════════
+   COUNT-UP FLASH
+══════════════════════════════════════ */
+.stat-num {
+  display: inline-block;
+  transition: color 0.2s;
+}
+.stat-num.counting {
+  color: var(--teal);
+}
